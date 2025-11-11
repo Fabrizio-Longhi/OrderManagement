@@ -16,6 +16,7 @@ export const api = request(app);
 
 beforeEach(async () => {
   await prisma.user.deleteMany();
+  await prisma.product.deleteMany();
 });
 
 // Cerrar Prisma al final (buena práctica)

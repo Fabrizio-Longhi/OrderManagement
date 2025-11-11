@@ -17,7 +17,7 @@ describe("Auth endpoints", () => {
     expect(response.body).toHaveProperty("id");
     expect(response.body.email).toBe("test@example.com");
   });
-});
+
 
 test("POST /api/auth/register should fail with short password", async () => {
   const res = await api.post("/api/auth/register").send({
@@ -28,6 +28,7 @@ test("POST /api/auth/register should fail with short password", async () => {
   expect(res.status).toBe(422);
   expect(res.body.error).toBe("Password more short");
 });
+
 
 test("POST /api/auth/register email invalid", async () => {
   const res = await api.post("/api/auth/register").send({
@@ -124,7 +125,7 @@ test("POST /api/auth/login should fail with missing password", async () => {
 //ME
 
 test("GET /api/auth/me should return user info if token is valid", async () => {
-  const registerRes = await api.post("/api/auth/register").send({
+  await api.post("/api/auth/register").send({
     email: "me@example.com",
     password: "12345678910",
   });
@@ -149,5 +150,5 @@ test("GET /api/auth/me should return 401 if token is missing", async () => {
   expect(res.status).toBe(401);
   expect(res.body.error).toBe("Token not provided");
 });
-
+});
 
