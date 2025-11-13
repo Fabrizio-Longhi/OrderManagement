@@ -117,6 +117,7 @@ npm run dev
 Aqui: `http://localhost:4000`
 
 ## Tests automatizados
+
 El proyecto incluye pruebas con Jest + Supertest.
 
 Para ejecutarlas:
@@ -124,3 +125,34 @@ Para ejecutarlas:
 ```bash
 npm run test
 ```
+
+## 🧰 Scripts útiles
+
+```bash
+Comando                    Descripción
+npm run dev                Inicia el servidor de desarrollo
+npm run test               Ejecuta los tests con Jest
+npm run db:push:test       Sincroniza el esquema en la base de datos de testing
+npm run studio:dev         Abre Prisma Studio para la base de datos de desarrollo
+npm run studio:test        Abre Prisma Studio para la base de datos de testeo
+```
+
+# Estructura frontend
+
+```bashfrontend/
+├─ src/
+│  ├─ api/               # funciones para llamar al backend (fetch o axios)
+│  ├─ components/        # componentes reutilizables
+│  ├─ pages/             # páginas: Login, Products, Orders, etc.
+│  ├─ hooks/             # hooks personalizados (opcional)
+│  ├─ context/           # contexto global (para auth, por ejemplo)
+│  ├─ types/             # tipos TS compartidos (Product, Order, etc.)
+│  ├─ App.tsx
+│  ├─ main.tsx
+│  └─ index.css
+├─ package.json
+└─ tsconfig.json
+```
+
+Ejecutar el frontend:
+`npm run dev`
