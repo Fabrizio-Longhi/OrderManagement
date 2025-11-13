@@ -15,9 +15,11 @@ export const api = request(app);
 // Limpiar la base de datos antes de cada test
 
 beforeEach(async () => {
-  await prisma.user.deleteMany();
+ await prisma.orderItem.deleteMany();
+  await prisma.order.deleteMany();
   await prisma.product.deleteMany();
-  await prisma.customers.deleteMany();
+  await prisma.customer.deleteMany();
+  await prisma.user.deleteMany();
 });
 
 // Cerrar Prisma al final (buena práctica)
