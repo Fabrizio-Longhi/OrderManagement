@@ -1,0 +1,32 @@
+.product-form-container {
+  padding: 60px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.product-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.product-form input,
+.product-form textarea {
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+}
+
+.btn-primary {
+  background: #111827;
+  color: white;
+  padding: 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-primary:hover {
+  background: #1f2937;
+}

@@ -1,0 +1,35 @@
+.products-container {
+  padding: 24px;
+}
+
+.products-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.products-subtitle {
+  color: #777;
+  margin-top: 4px;
+  font-size: 18px;
+}
+
+.btn-new {
+  background: #111827;
+  color: white;
+  padding: 20px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-new:hover {
+  opacity: 0.9;
+}
+
+.products-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
