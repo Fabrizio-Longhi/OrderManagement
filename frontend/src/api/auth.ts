@@ -7,8 +7,13 @@ export async function registerUser(email: string, password: string) {
         body: JSON.stringify({email,password}),
     });
 
-    if(!res.ok) throw new Error("Error register user");
-    return res.json();
+    const data = await res.json().catch(() => null);
+
+    if (!res.ok) {
+        throw new Error(data?.error || "Error registering user");
+    }
+    return data;
+
 }
 
 export async function loginUser(email: string, password: string) {
@@ -18,7 +23,10 @@ export async function loginUser(email: string, password: string) {
         body: JSON.stringify({email,password}),
     });
     
-    if(!res.ok) throw new Error("Credential incorrect");
+    const data = await res.json().catch(() => null);
 
-    return res.json();
+    if (!res.ok) {
+        throw new Error(data?.error || "Error login user");
+    }
+    return data;
 }

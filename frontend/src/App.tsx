@@ -1,13 +1,24 @@
+import { Routes, Route } from "react-router-dom";
+import { Dashboard } from "./pages/Dashboard";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 
-function Dashboard() {
-  return <h1>Bienvenido al Dashboard</h1>;
-}
-
-export default function App() {
+function App() {
   return (
-    <ProtectedRoute>
-      <Dashboard />
-    </ProtectedRoute>
+    <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route
+        path="/"
+        element={
+          <ProtectedRoute>      {/*Se muestra si esta logueado */}
+            <Dashboard />
+          </ProtectedRoute>
+        }
+      />
+    </Routes>
   );
 }
+
+export default App;

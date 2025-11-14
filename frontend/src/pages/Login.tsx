@@ -2,6 +2,9 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../api/auth";
 import { useAuth } from "../context/AuthContext";
+import "./AuthForm.css";
+import toast from "react-hot-toast";
+
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -17,16 +20,45 @@ export default function Login() {
       login(res.token); // guarda token en contexto + localStorage
       navigate("/"); // ir a dashboard
     } catch (err: any) {
-      setError(err.message || "Error en login");
+      toast.error(err.message || "Credenciales incorrectas");
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      {error && <div className="text-red-600">{error}</div>}
-      <input value={email} onChange={(e) => setEmail(e.target.value)} />
-      <input value={password} type="password" onChange={(e) => setPassword(e.target.value)} />
-      <button type="submit">Login</button>
-    </form>
+    <div className="auth-container">
+      <div className="auth-card">
+        <h1>Iniciar sesión</h1>
+        <p>Comienza a gestionar tus órdenes hoy</p>
+
+        <form onSubmit={handleSubmit}>
+          {error && <div className="text-red-600">{error}</div>}
+
+          <label>Email</label>
+          <input
+            type="email"
+            placeholder="tu@email.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+
+          <label>Contraseña</label>
+          <input
+            type="password"
+            placeholder="********"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required 
+          />
+
+          <button type="submit">Iniciar sesión</button>
+        </form>
+
+        <div className="auth-footer">
+          <p>¿No tienes cuenta?</p>
+          <button onClick={() => navigate("/register")}>Registrarse</button>
+        </div>
+      </div>
+    </div>
   );
 }

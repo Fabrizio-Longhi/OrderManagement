@@ -1,57 +1,60 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { registerUser } from "../api/auth";
+import "./AuthForm.css";
+import toast from "react-hot-toast";
 
 export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
-  const [success, setSuccess] = useState<string | null>(null);
-  const navigate = useNavigate();
+  const navigate = useNavigate();               // Para cambiar de pagina
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await registerUser(email, password); // Llama al backend
-      setSuccess("Usuario creado correctamente");
-      setTimeout(() => navigate("/login"), 1000); // redirige luego de 1 seg
+      await registerUser(email, password);      // Le pega al backend
+      navigate("/login");
     } catch (err: any) {
-      setError(err.message || "Error al registrar usuario");
+      toast.error(err.message || "Credenciales incorrectas");
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Registro</h2>
+    <div className="auth-container">
+      <div className="auth-card">
+        <h1>Crear Cuenta</h1>
+        <p>Comienza a gestionar tus órdenes hoy</p>
 
-      {error && <div style={{ color: "red" }}>{error}</div>}
-      {success && <div style={{ color: "green" }}>{success}</div>}
+        <form onSubmit={handleSubmit}>
+          {error && <div className="text-red-600">{error}</div>}
 
-      <input
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
+          <label>Email</label>
+          <input
+            type="email"
+            placeholder="tu@email.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
 
-      <input
-        type="password"
-        placeholder="Contraseña"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
+          <label>Contraseña</label>
+          <input
+            type="password"
+            placeholder="********"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required 
+          />
 
-      <button type="submit">Registrar</button>
+          <button type="submit">Registrarse</button>
+        </form>
 
-      <p>
-        ¿Ya tenés cuenta?{" "}
-        <span
-          style={{ color: "blue", cursor: "pointer" }}
-          onClick={() => navigate("/login")}
-        >
-          Iniciá sesión
-        </span>
-      </p>
-    </form>
+        <div className="auth-footer">
+          <p>¿Ya tienes cuenta?</p>
+          <button onClick={() => navigate("/login")}>Iniciar Sesión</button>
+        </div>
+      </div>
+    </div>
   );
 }
