@@ -1,3 +1,4 @@
+/* --- Desktop --- */
 .sidebar {
   width: 220px;
   background: #111827;
@@ -5,11 +6,88 @@
   padding: 20px;
   display: flex;
   flex-direction: column;
+  transition: transform 0.3s ease-in-out;
+  position: relative;
 }
 
+/* --- MOBILE/TABLET: Sidebar oculto por defecto --- */
+@media (max-width: 1397px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 280px;
+    max-width: 80vw;
+    transform: translateX(-100%);
+    z-index: 1000;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  /* Overlay oscuro detrás del sidebar */
+  .sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+  }
+
+  /* Botón hamburguesa visible */
+  .hamburger-btn {
+    display: block;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 998;
+    background: #111827;
+    color: white;
+    font-size: 24px;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Botón X para cerrar */
+  .close-btn {
+    display: block;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: transparent;
+    color: white;
+    font-size: 28px;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    line-height: 1;
+  }
+}
+
+/* --- DESKTOP: ocultar botones mobile --- */
+@media (min-width: 1398px) {
+  .hamburger-btn,
+  .close-btn,
+  .sidebar-overlay {
+    display: none;
+  }
+}
+
+/* Resto del CSS */
 .sidebar-title {
   font-size: 20px;
   margin-bottom: 30px;
+  margin-top: 10px;
 }
 
 .sidebar-menu {
@@ -23,7 +101,7 @@
   color: #d1d5db;
   text-decoration: none;
   padding: 8px 0;
-  font-size: 20;
+  transition: color 0.2s;
 }
 
 .sidebar-menu a:hover {
@@ -37,6 +115,8 @@
   color: white;
   cursor: pointer;
   border-radius: 5px;
+  font-size: 14px;
+  transition: background 0.2s;
 }
 
 .logout-btn:hover {
