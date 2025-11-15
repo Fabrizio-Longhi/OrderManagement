@@ -24,8 +24,14 @@ export default function Orders() {
           <h1 className="orders-title">Órdenes</h1>
           <p className="orders-subtitle">Gestiona las órdenes de tus clientes</p>
         </div>
-        <button className="btn-new-order">+ Nueva Orden</button>
+        <button 
+          className="btn-new-order"
+          onClick={() => window.location.href = "/orders/new"}
+        >
+          + Nueva Orden
+        </button>
       </div>
+
 
       <div className="orders-table-container">
         <h2 className="table-title">Todas las Órdenes</h2>

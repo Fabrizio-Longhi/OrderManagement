@@ -7,6 +7,8 @@ import DashboardLayout from "./layout/DashboardLayout";
 import Products from "./pages/Products/Products";
 import ProductFormPage from "./pages/Products/ProductFormPage";
 import Orders from "./pages/Orders/Orders";
+import OrderCreatePage from "./pages/Orders/OrderCreatePage";
+import OrderDetailsPage from "./pages/Orders/OrderDetailsPage";
 import Customers from "./pages/Customers/Customers";
 import CustomerFormPage from "./pages/Customers/CustomerFormPage";
 import CustomerDetailsPage from "./pages/Customers/CustomerDetailsPage";
@@ -65,6 +67,25 @@ function App() {
           </DashboardLayout>
         </ProtectedRoute>
       } />
+
+      <Route path="/orders/new" element={
+        <ProtectedRoute>
+          <DashboardLayout>
+            <OrderCreatePage />
+          </DashboardLayout>
+        </ProtectedRoute>
+      } />
+
+      <Route
+        path="/orders/:id"
+        element={
+          <ProtectedRoute>
+            <DashboardLayout>
+              <OrderDetailsPage />
+            </DashboardLayout>
+          </ProtectedRoute>
+        }
+      />
 
       <Route path="/customers" element={
         <ProtectedRoute>

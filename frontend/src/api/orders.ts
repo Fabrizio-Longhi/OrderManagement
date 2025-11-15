@@ -11,14 +11,21 @@ export async function getOrders() {
 }
 
 export async function getOrderById(id: number) {
-  const res = await fetch(`${API_URL}/orders/${id}`, {
-    method: "GET",
-    headers: { "Content-Type": "application/json" },
-  });
+  const res = await fetch(`${API_URL}/orders/${id}`);
 
-  if (!res.ok) throw new Error("Order not found");
-  return res.json();
+  let body = null;
+  try {
+    body = await res.json();
+  } catch {}
+
+  if (!res.ok) {
+    const msg = body?.message || "Error fetching order";
+    throw new Error(msg);
+  }
+
+  return body;
 }
+
 
 export async function createOrder(data: any) {
   const res = await fetch(`${API_URL}/orders`, {
@@ -36,13 +43,20 @@ export async function createOrder(data: any) {
 
 export async function confirmOrder(id: number) {
   const res = await fetch(`${API_URL}/orders/${id}/confirm`, {
-    method: "PUT",
+    method: "PATCH",
     headers: { "Content-Type": "application/json" },
   });
 
-  const body = await res.json();
+  let body = null;
+  try {
+    body = await res.json();
+  } catch {}
 
-  if (!res.ok) throw new Error(body.message || "Error confirmando orden");
+  if (!res.ok) {
+    const msg = body?.message || "Error confirming order";
+    throw new Error(msg);
+  }
 
   return body;
 }
+
