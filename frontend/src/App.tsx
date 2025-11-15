@@ -6,6 +6,11 @@ import { ProtectedRoute } from "./components/ProtectedRoute";
 import DashboardLayout from "./layout/DashboardLayout";
 import Products from "./pages/Products/Products";
 import ProductFormPage from "./pages/Products/ProductFormPage";
+import Orders from "./pages/Orders/Orders";
+import Customers from "./pages/Customers/Customers";
+import CustomerFormPage from "./pages/Customers/CustomerFormPage";
+import CustomerDetailsPage from "./pages/Customers/CustomerDetailsPage";
+import CustomerEditForm from "./pages/Customers/CustomerEditForm";
 
 function App() {
   return (
@@ -52,6 +57,44 @@ function App() {
           </ProtectedRoute>
         }
       />
+
+      <Route path="/orders" element={
+        <ProtectedRoute>
+          <DashboardLayout>
+            <Orders />
+          </DashboardLayout>
+        </ProtectedRoute>
+      } />
+
+      <Route path="/customers" element={
+        <ProtectedRoute>
+          <DashboardLayout>
+            <Customers />
+          </DashboardLayout>
+        </ProtectedRoute>
+      } />
+
+      <Route path="/customers/new" element={
+        <ProtectedRoute>
+          <DashboardLayout>
+            <CustomerFormPage />
+          </DashboardLayout>
+        </ProtectedRoute>
+      } />
+      <Route path="/customers/:id" element={
+        <ProtectedRoute>
+          <DashboardLayout>
+            <CustomerDetailsPage />
+          </DashboardLayout>
+        </ProtectedRoute>
+      } />
+      <Route path="/customers/:id/edit" element={
+        <ProtectedRoute>
+          <DashboardLayout>
+            <CustomerEditForm />
+          </DashboardLayout>
+        </ProtectedRoute>
+      } />
     </Routes>
   );
 }

@@ -53,7 +53,7 @@ model Order {
   createdAt   DateTime      @default(now())
   items       OrderItem[]
 
-  customer    Customer      @relation(fields: [customerId], references: [id])
+  customer   Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
 }
 
 model OrderItem {
@@ -64,5 +64,5 @@ model OrderItem {
   price     Decimal   @default(0.00)
 
   order     Order     @relation(fields: [orderId], references: [id])
-  product   Product   @relation(fields: [productId], references: [id])
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
 }

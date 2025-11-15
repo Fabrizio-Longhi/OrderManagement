@@ -54,3 +54,17 @@ export async function updateProduct(id: number, data: any) {
 
   return body;
 }
+export async function deleteProduct(id: number) {
+  const res = await fetch(`${API_URL}/products/${id}`, {
+    method: "DELETE",
+  });
+
+  if (!res.ok) {
+    const body = await res.json().catch(() => null);
+    const errorMessage = body?.message || "Error al eliminar producto";
+    throw new Error(errorMessage);
+  }
+
+  return true;
+}
+

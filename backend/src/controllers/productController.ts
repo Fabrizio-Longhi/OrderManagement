@@ -114,22 +114,26 @@ export const updateProducts = async (req: Request, res: Response) => {
 };
 
 export const deleteProducts = async (req: Request, res: Response) => {
-    try{
-        const { id } = req.params;
+  try {
+    const { id } = req.params;
 
-        await prisma.product.delete({
-            where: {id: Number(id)}
-        });
-        res.json({ message: "Product deleted successfully" });
-    } catch (error) {
-         if (error instanceof PrismaClientKnownRequestError) {
-            if (error.code === "P2025") {
-            return res.status(404).json({ message: "Product not found" });
-            }
-        res.status(500).json({ message: "Error deleting product" });
-        }
+    await prisma.product.delete({
+      where: { id: Number(id) }
+    });
+
+    res.json({ message: "Product deleted successfully" });
+
+  } catch (error) {
+    if (error instanceof PrismaClientKnownRequestError) {
+      if (error.code === "P2025") {
+        return res.status(404).json({ message: "Product not found" });
+      }
     }
-}
+
+    console.error("Error deleting product:", error);
+    return res.status(500).json({ message: "Error deleting product" });
+  }
+};
 
 export const getProductById = async (req: Request, res: Response) => {
   try {
