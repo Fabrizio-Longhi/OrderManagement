@@ -83,7 +83,6 @@ export default function Dashboard() {
             <span className="stat-icon">📦</span>
           </div>
           <h2 className="stat-value">{stats.totalProducts}</h2>
-          <p className="stat-note">+12% desde el mes pasado</p>
         </div>
 
         {/* Órdenes Activas */}
@@ -93,9 +92,6 @@ export default function Dashboard() {
             <span className="stat-icon">🛒</span>
           </div>
           <h2 className="stat-value">{stats.activeOrders}</h2>
-          <p className="stat-note">
-            {stats.pendingOrders} pendientes, {stats.confirmedOrders} confirmadas
-          </p>
         </div>
 
         {/* Clientes */}
@@ -105,7 +101,6 @@ export default function Dashboard() {
             <span className="stat-icon">👥</span>
           </div>
           <h2 className="stat-value">{stats.totalCustomers}</h2>
-          <p className="stat-note">+{stats.newCustomers} nuevos este mes</p>
         </div>
 
         {/* Ingresos */}
@@ -115,7 +110,6 @@ export default function Dashboard() {
             <span className="stat-icon">💲</span>
           </div>
           <h2 className="stat-value">${stats.totalRevenue.toLocaleString()}</h2>
-          <p className="stat-note">+{stats.revenueGrowth}% desde el mes pasado</p>
         </div>
       </div>
     </div>
