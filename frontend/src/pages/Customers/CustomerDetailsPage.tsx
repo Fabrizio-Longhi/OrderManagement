@@ -60,21 +60,21 @@ export default function CustomerDetailsPage() {
 
       <div className="customer-actions">
         <button
-          className="btn-edit"
+          className="btn"
           onClick={() => navigate(`/customers/${customer.id}/edit`)}
         >
           ✏ Editar
         </button>
 
         <button
-          className="btn-delete"
+          className="btn"
           onClick={handleDelete}
         >
           🗑️ Eliminar Cliente
       </button>
 
         <button
-          className="btn-back"
+          className="btn"
           onClick={() => navigate("/customers")}
         >
           ← Volver

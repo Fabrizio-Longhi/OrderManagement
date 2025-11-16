@@ -32,7 +32,7 @@
   gap: 12px;
 }
 
-.btn-edit {
+.btn {
   background: #111827;
   color: white;
   border: none;
@@ -41,35 +41,6 @@
   cursor: pointer;
 }
 
-.btn-edit:hover {
+.btn:hover {
   background: #1f2937;
 }
-
-.btn-back {
-  background: #e5e7eb;
-  border: none;
-  padding: 12px 20px;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.btn-back:hover {
-  background: #d1d5db;
-}
-
-.btn-delete {
-  background: #dc2626;
-  color: white;
-  border: none;
-  padding: 12px 18px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 500;
-  transition: background 0.2s;
-}
-
-.btn-delete:hover {
-  background: #b91c1c;
-}
-

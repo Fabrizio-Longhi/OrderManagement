@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { useParams, useNavigate } from "react-router-dom";
 import { getOrderById, confirmOrder } from "../../api/orders";
 import "./OrderDetailsPage.css";
@@ -27,16 +28,49 @@ export default function OrderDetailsPage() {
   }
 
   async function handleConfirm() {
-  if (!window.confirm("¿Confirmar esta orden?")) return;
+  toast(
+    (t) => (
+      <div className="confirm-toast-container">
+        <span className="confirm-toast-text">¿Confirmar esta orden?</span>
 
-  try {
-    await confirmOrder(order.id);
-    alert("Orden confirmada correctamente");
-    loadOrder(); // Recarga los datos para reflejar los cambios
-  } catch (error: any) {
-    alert(error.message);
-  }
+        <div className="confirm-toast-actions">
+          <button
+            className="confirm-btn"
+            onClick={async () => {
+              toast.dismiss(t.id);
+              try {
+                await confirmOrder(order.id);
+                toast.success("Orden confirmada correctamente");
+                loadOrder();
+              } catch (error: any) {
+                toast.error(error.message);
+              }
+            }}
+          >
+            Confirmar
+          </button>
+
+          <button
+            className="cancel-btn"
+            onClick={() => toast.dismiss(t.id)}
+          >
+            Cancelar
+          </button>
+        </div>
+      </div>
+    ),
+    {
+      duration: 8000,
+      style: {
+        background: "white",
+        border: "1px solid #e5e7eb",
+        borderRadius: "10px",
+        padding: "16px 20px",
+      },
+    }
+  );
 }
+
 
   if (loading) return <p className="loading">Cargando...</p>;
   if (!order) return null;

@@ -118,3 +118,29 @@ select, input {
 .btn-back:hover {
   background: #d1d5db;
 }
+
+.success-toast {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.success-toast-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #065f46;
+}
+
+.success-toast-desc {
+  font-size: 14px;
+  color: #064e3b;
+}
+
+.success-toast-container {
+  background: #ecfdf5;
+  border-left: 5px solid #059669;
+  padding: 14px 16px;
+  border-radius: 8px;
+  min-width: 240px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
