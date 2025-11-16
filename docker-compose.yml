@@ -32,6 +32,7 @@ services:
     restart: unless-stopped
     ports:
       - "4000:4000"
+      - "5555:5555"  # Puerto para Prisma Studio
     environment:
       PORT: 4000
       DATABASE_URL: postgresql://postgres:jimQSroc7o5vMY04vTqJiLT0ruYD03JXK3l8MTYV8RZICxO6OAsSRFZP91Aw0tZQ@db:5432/order_management?schema=public
