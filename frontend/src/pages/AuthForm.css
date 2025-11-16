@@ -78,3 +78,46 @@
 .auth-footer button:hover {
   background-color: #f3f4f6;
 }
+
+/* === Toast verde suave para éxito === */
+.success-toast-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.success-toast {
+  background: #e6ffed;          /* verde clarito */
+  border-left: 6px solid #2e7d32; /* verde fuerte */
+  padding: 14px 18px;
+  border-radius: 10px;
+  width: 260px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+  animation: fadeSlideIn 0.25s ease-out;
+}
+
+.success-toast-title {
+  display: block;
+  font-size: 16px;
+  font-weight: bold;
+  color: #1b5e20;
+}
+
+.success-toast-desc {
+  display: block;
+  margin-top: 4px;
+  font-size: 14px;
+  color: #33691e;
+}
+
+/* Animación */
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}

@@ -73,6 +73,23 @@ Para ejecutarlas:
 └─ tsconfig.json
 ```
 
+## Estructura Backend
+
+```bash
+backend/
+│
+├── src/
+│   ├── index.ts         # punto de entrada del servidor
+│   ├── app.ts           # configuración de Express
+│   ├── routes/          # rutas (auth, products, etc.)
+│   ├── controllers/     # lógica de cada endpoint
+│   └── middlewares/     # middlewares (auth, errors, etc.)
+│
+│── test/                # Testing
+├── package.json
+├── tsconfig.json
+```
+
 # Uso de IA
 
 ## Herramientas usada

@@ -11,14 +11,31 @@ export default function Register() {
   const navigate = useNavigate();               // Para cambiar de pagina
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    try {
-      await registerUser(email, password);      // Le pega al backend
+  e.preventDefault();
+  try {
+    await registerUser(email, password);
+
+    toast((t) => (
+      <div className="success-toast-container">
+        <div className="success-toast">
+          <span className="success-toast-title">Cuenta creada</span>
+          <span className="success-toast-desc">
+            Tu usuario se registró exitosamente.
+          </span>
+        </div>
+      </div>
+    ), {
+      duration: 3000,
+    });
+
+    setTimeout(() => {
       navigate("/login");
-    } catch (err: any) {
-      toast.error(err.message || "Credenciales incorrectas");
-    }
-  };
+    }, 1200);
+
+  } catch (err: any) {
+    toast.error(err.message || "Credenciales incorrectas");
+  }
+};
 
   return (
     <div className="auth-container">
