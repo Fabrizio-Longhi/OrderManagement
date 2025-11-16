@@ -21,7 +21,6 @@ export default function Products() {
     loadProducts();
   }, []);
 
-  // 🔥 FUNCIÓN PARA ELIMINAR PRODUCTO
   const handleDelete = async (id: number) => {
     try {
       await deleteProduct(id);

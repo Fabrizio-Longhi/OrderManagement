@@ -138,3 +138,74 @@
 .btn-edit:hover {
   background: #e5e5e5;
 }
+
+/* === Toast rojo suave para eliminar === */
+.delete-toast {
+  background: #ffeaea;
+  border-left: 6px solid #d32f2f;
+  padding: 16px 20px;
+  border-radius: 10px;
+  width: 280px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  animation: fadeSlideIn 0.25s ease-out;
+}
+
+.delete-toast-title {
+  margin: 0;
+  font-size: 17px;
+  font-weight: bold;
+  color: #b71c1c;
+}
+
+.delete-toast-desc {
+  margin-top: 6px;
+  font-size: 14px;
+  color: #7f0000;
+}
+
+.delete-toast-buttons {
+  margin-top: 14px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.toast-cancel {
+  background: #eee;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: background 0.2s;
+}
+
+.toast-cancel:hover {
+  background: #ddd;
+}
+
+.toast-delete {
+  background: #d32f2f;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: background 0.2s;
+}
+
+.toast-delete:hover {
+  background: #b71c1c;
+}
+
+@keyframes fadeSlideIn {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

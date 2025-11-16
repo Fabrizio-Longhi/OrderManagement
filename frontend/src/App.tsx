@@ -13,12 +13,9 @@ import Customers from "./pages/Customers/Customers";
 import CustomerFormPage from "./pages/Customers/CustomerFormPage";
 import CustomerDetailsPage from "./pages/Customers/CustomerDetailsPage";
 import CustomerEditForm from "./pages/Customers/CustomerEditForm";
-import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
-    <>
-    <Toaster position="top-right" />
     <Routes>
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
@@ -120,7 +117,6 @@ function App() {
         </ProtectedRoute>
       } />
     </Routes>
-    </>
     
   );
 }

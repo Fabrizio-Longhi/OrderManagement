@@ -53,8 +53,16 @@ Antes de ejecutar el proyecto, asegurate de tener instalado:
 - [Node.js 18+](https://nodejs.org/en/)
 - [PostgreSQL 14+](https://www.postgresql.org/download/)
 - npm o yarn
+- Docker Desktop instalado
+- Docker Compose instalado (viene incluido con Docker Desktop)
 
----
+## Iniciar proyecto con Docker
+
+1) Por primera vez correr: `docker compose up --build`
+2) Una vez inicializado correr: `docker compose up --build`
+
+- Detener servicios: `docker compose down`
+- Detener y eliminar volumenes y BD: `docker compose down -v`
 
 ## 🧩 Configuración inicial
 

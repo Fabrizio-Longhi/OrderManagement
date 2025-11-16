@@ -1,6 +1,7 @@
 import "./ProductCard.css";
 import { useNavigate } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
+import toast from "react-hot-toast";
 
 // Define la estructura de datos que esperamos recibir.
 interface ProductProps {
@@ -26,7 +27,6 @@ export default function ProductCard({
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
-  // Cerrar el menú al hacer clic fuera de él
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
@@ -43,12 +43,39 @@ export default function ProductCard({
     };
   }, [menuOpen]);
 
-  const handleDelete = () => {
-    if (window.confirm(`¿Estás seguro de eliminar "${name}"?`)) {
-      onDelete?.(id);
-    }
+  const handleDeleteToast = () => {
     setMenuOpen(false);
+
+    toast((t) => (
+      <div className="delete-toast">
+        <h4 className="delete-toast-title">Eliminar producto</h4>
+        <p className="delete-toast-desc">
+          ¿Seguro que deseas eliminar "<strong>{name}</strong>"?
+        </p>
+
+        <div className="delete-toast-buttons">
+          <button
+            className="toast-cancel"
+            onClick={() => toast.dismiss(t.id)}
+          >
+            Cancelar
+          </button>
+
+          <button
+            className="toast-delete"
+            onClick={() => {
+              onDelete?.(id);
+              toast.dismiss(t.id);
+              toast.success("Producto eliminado");
+            }}
+          >
+            Eliminar
+          </button>
+        </div>
+      </div>
+    ));
   };
+
 
   return (
     <div className="product-card">
@@ -64,7 +91,7 @@ export default function ProductCard({
         
         {menuOpen && (
           <div className="menu-dropdown">
-            <button className="menu-item delete" onClick={handleDelete}>
+            <button className="menu-item delete" onClick={handleDeleteToast}>
               🗑️ Eliminar
             </button>
           </div>

@@ -144,3 +144,29 @@ select, input {
   min-width: 240px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
+
+.fail-toast {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fail-toast-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffff;
+}
+
+.fail-toast-desc {
+  font-size: 14px;
+  color: #ffff;
+}
+
+.fail-toast-container {
+  background: #961b05;
+  border-left: 5px solid #961b05;
+  padding: 14px 16px;
+  border-radius: 8px;
+  min-width: 240px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}

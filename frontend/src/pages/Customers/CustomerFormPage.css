@@ -52,3 +52,59 @@
 .btn-save:hover {
   background: #1f2937;
 }
+
+
+.btn-back {
+  margin-top: 20px;
+  background: #e5e7eb;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-back:hover {
+  background: #d1d5db;
+}
+
+.success-green-toast-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.success-green-toast {
+  background: #eaffea;
+  border-left: 6px solid #4caf50; 
+  padding: 14px 18px;
+  border-radius: 10px;
+  min-width: 260px;
+  max-width: 320px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+  animation: fadeSlideIn 0.25s ease-out;
+}
+
+.success-green-title {
+  display: block;
+  font-weight: bold;
+  font-size: 16px;
+  color: #2e7d32;
+}
+
+.success-green-desc {
+  font-size: 14px;
+  margin-top: 4px;
+  color: #33691e;
+}
+
+/* Animación suave */
+@keyframes fadeSlideIn {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

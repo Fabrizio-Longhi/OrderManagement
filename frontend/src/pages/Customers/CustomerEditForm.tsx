@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 import { getCustomerById, updateCustomer } from "../../api/customers";
 import "./CustomerEditForm.css";
+import "./CustomerFormPage.css"
 
 export default function CustomerEditForm() {
   const { id } = useParams();
@@ -23,7 +25,7 @@ export default function CustomerEditForm() {
       setName(data.name);
       setEmail(data.email);
     } catch (error) {
-      alert("No se pudo cargar el cliente");
+      toast.error("No se pudo cargar el cliente");
     } finally {
       setLoading(false);
     }
@@ -37,10 +39,20 @@ export default function CustomerEditForm() {
 
       await updateCustomer(Number(id), { name, email });
 
-      alert("Cliente actualizado correctamente");
+      toast(() => (
+        <div className="success-green-toast-container">
+          <div className="success-green-toast">
+            <span className="success-green-title">Cliente actualizado</span>
+            <span className="success-green-desc">
+              Los datos fueron guardados correctamente.
+            </span>
+          </div>
+        </div>
+      ));
+
       navigate(`/customers/${id}`);
     } catch (error: any) {
-      alert(error.message);
+      toast.error(error.message || "Error al actualizar cliente");
     } finally {
       setLoading(false);
     }

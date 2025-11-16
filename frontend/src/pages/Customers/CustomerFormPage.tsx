@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import toast from "react-hot-toast";
 import {
   createCustomer,
   getCustomerById,
@@ -39,29 +40,52 @@ export default function CustomerFormPage() {
   }
 
   async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
+  e.preventDefault();
 
-    if (!name.trim() || !email.trim()) {
-      return alert("Nombre y email son obligatorios");
-    }
-
-    try {
-      setLoading(true);
-
-      if (isEditing) {
-        await updateCustomer(Number(id), { name, email });
-      } else {
-        await createCustomer({ name, email });
-      }
-
-      navigate("/customers");
-    } catch (error: any) {
-      alert(error.message || "Ocurrió un error");
-    } finally {
-      setLoading(false);
-    }
+  if (!name.trim() || !email.trim()) {
+    toast.error("Nombre y email son obligatorios");
+    return;
   }
 
+  try {
+    setLoading(true);
+
+    if (isEditing) {
+      await updateCustomer(Number(id), { name, email });
+
+      toast(() => (
+        <div className="success-green-toast-container">
+          <div className="success-green-toast">
+            <span className="success-green-title">Cliente actualizado</span>
+            <span className="success-green-desc">
+              Los datos fueron modificados correctamente.
+            </span>
+          </div>
+        </div>
+      ));
+
+    } else {
+      await createCustomer({ name, email });
+
+      toast(() => (
+        <div className="success-green-toast-container">
+          <div className="success-green-toast">
+            <span className="success-green-title">Cliente creado</span>
+            <span className="success-green-desc">
+              El cliente se registró correctamente.
+            </span>
+          </div>
+        </div>
+      ));
+    }
+
+    navigate("/customers");
+  } catch (error: any) {
+    toast.error(error.message || "Ocurrió un error");
+  } finally {
+    setLoading(false);
+  }
+}
   return (
     <div className="customer-form-container">
       <h1 className="form-title">
@@ -97,6 +121,9 @@ export default function CustomerFormPage() {
             : "Crear Cliente"}
         </button>
       </form>
+        <button className="btn-back" onClick={() => navigate("/customers")}>
+        ← Volver
+      </button>
     </div>
   );
 }

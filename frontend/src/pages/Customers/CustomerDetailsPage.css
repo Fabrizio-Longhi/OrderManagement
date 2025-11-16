@@ -44,3 +44,47 @@
 .btn:hover {
   background: #1f2937;
 }
+
+
+/* === Toast de eliminación === */
+.delete-toast-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.delete-toast {
+  background: #ffefef;
+  border-left: 6px solid #d9534f;
+  padding: 14px 18px;
+  border-radius: 10px;
+  min-width: 260px;
+  max-width: 320px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  animation: slideIn 0.25s ease-out;
+}
+
+.delete-toast-title {
+  display: block;
+  font-weight: bold;
+  font-size: 16px;
+  color: #b52b27;
+}
+
+.delete-toast-desc {
+  font-size: 14px;
+  margin-top: 4px;
+  color: #7a1f1b;
+}
+
+/* Animación */
+@keyframes slideIn {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

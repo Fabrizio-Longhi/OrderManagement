@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 import { getCustomerById, deleteCustomer } from "../../api/customers";
 import "./CustomerDetailsPage.css";
 
@@ -16,17 +17,33 @@ export default function CustomerDetailsPage() {
   const [customer, setCustomer] = useState<Customer | null>(null);
   const [loading, setLoading] = useState(false);
 
-  async function handleDelete() {
-    if (!window.confirm("¿Seguro que deseas eliminar este cliente?")) return;
+async function handleDelete() {
+  if (!window.confirm("¿Seguro que deseas eliminar este cliente?")) return;
 
-    try {
-      await deleteCustomer(Number(id));
-      alert("Cliente eliminado correctamente");
-      navigate("/customers");
-    } catch (error: any) {
-      alert(error.message);
-    }
+  try {
+    await deleteCustomer(Number(id));
+
+    toast(
+      () => (
+        <div className="delete-toast-container">
+          <div className="delete-toast">
+            <span className="delete-toast-title">Cliente eliminado</span>
+            <span className="delete-toast-desc">
+              El cliente fue eliminado correctamente.
+            </span>
+          </div>
+        </div>
+      ),
+      {
+        duration: 3500,
+      }
+    );
+
+    navigate("/customers");
+  } catch (error: any) {
+    toast.error(error.message || "Error eliminando cliente");
   }
+}
 
   useEffect(() => {
     loadCustomer();

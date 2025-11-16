@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { getCustomers } from "../../api/customers";
 import { getProducts } from "../../api/products";
@@ -93,35 +94,65 @@ export default function OrderCreatePage() {
   }
 
   async function handleSubmit() {
-    if (!selectedCustomer) {
-      alert("Selecciona un cliente");
-      return;
-    }
-
-    if (items.length === 0) {
-      alert("Agrega al menos un producto");
-      return;
-    }
-
-    try {
-      setLoading(true);
-
-      await createOrder({
-        customerId: Number(selectedCustomer),
-        items: items.map((i) => ({
-          productId: i.productId,
-          quantity: i.quantity,
-        })),
-      });
-
-      alert("Orden creada con éxito");
-      navigate("/orders");
-    } catch (error: any) {
-      alert(error.message || "Error creando orden");
-    } finally {
-      setLoading(false);
-    }
+  if (!selectedCustomer) {
+    toast.error("Selecciona un cliente");
+    return;
   }
+
+  if (items.length === 0) {
+    toast(
+      () => (
+        <div className="fail-toast-container">
+          <div className="fail-toast">
+            <span className="fail-toast-title">Error al crear orden</span>
+            <span className="fail-toast-desc">
+              Seleccione algun producto
+            </span>
+          </div>
+        </div>
+      ),
+      {
+        duration: 4000,
+      }
+    )
+    return;
+  }
+
+  try {
+    setLoading(true);
+
+    await createOrder({
+      customerId: Number(selectedCustomer),
+      items: items.map((i) => ({
+        productId: i.productId,
+        quantity: i.quantity,
+      })),
+    });
+
+    toast(
+      () => (
+        <div className="success-toast-container">
+          <div className="success-toast">
+            <span className="success-toast-title">Orden creada</span>
+            <span className="success-toast-desc">
+              La orden se registró correctamente.
+            </span>
+          </div>
+        </div>
+      ),
+      {
+        duration: 4000,
+      }
+    );
+
+    navigate("/orders");
+  } catch (error: any) {
+    toast.error(error.message || "Error creando orden");
+  } finally {
+    setLoading(false);
+  }
+}
+
 
   const total = items.reduce((sum, i) => sum + i.subtotal, 0);
 
