@@ -20,17 +20,6 @@
   color: #111;
 }
 
-.btn-back {
-  background: #e5e7eb;
-  border: none;
-  padding: 10px 16px;
-  border-radius: 8px;
-  cursor: pointer;
-}
-.btn-back:hover {
-  background: #d1d5db;
-}
-
 .order-info-card {
   background: white;
   padding: 20px;
@@ -102,15 +91,14 @@
   gap: 12px;
 }
 
-.btn-confirm {
+.btn-back {
   background: #e5e7eb;
   border: none;
   padding: 10px 16px;
   border-radius: 8px;
   cursor: pointer;
 }
-
-.btn-confirm:hover {
-  background: #047857;
+.btn-back:hover {
+  background: #d1d5db;
 }
 

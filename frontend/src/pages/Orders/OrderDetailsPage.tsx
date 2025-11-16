@@ -49,7 +49,7 @@ export default function OrderDetailsPage() {
         <h1 className="order-title">Orden #{order.id}</h1>
         <div className="order-actions">
             {order.status === "PENDING" && (
-                <button className="btn-confirm" onClick={handleConfirm}>
+                <button className="btn-back" onClick={handleConfirm}>
                 ✔ Confirmar Orden
                 </button>
             )}

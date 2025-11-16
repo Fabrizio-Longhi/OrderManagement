@@ -30,3 +30,17 @@
 .btn-primary:hover {
   background: #1f2937;
 }
+
+.btn-back {
+  margin-top: 20px;
+  background: #e5e7eb;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-back:hover {
+  background: #d1d5db;
+}
+

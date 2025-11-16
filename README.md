@@ -3,7 +3,6 @@
 ## Correr Backend
 
 1) npm run dev
-2) `http://localhost:3000/api/health`
 
 Ver base de datos
 
@@ -62,7 +61,7 @@ Antes de ejecutar el proyecto, asegurate de tener instalado:
 ### 1️⃣ Clonar el repositorio
 
 ```bash
-git clone https://github.com/fabriziolonghi/OrderManagement.git
+git clone https://github.com/Fabrizio-Longhi/OrderManagement
 cd OrderManagement/backend
 ```
 
@@ -137,7 +136,7 @@ npm run studio:dev         Abre Prisma Studio para la base de datos de desarroll
 npm run studio:test        Abre Prisma Studio para la base de datos de testeo
 ```
 
-# Estructura frontend
+## Estructura frontend
 
 ```bashfrontend/
 ├─ src/
@@ -154,5 +153,22 @@ npm run studio:test        Abre Prisma Studio para la base de datos de testeo
 └─ tsconfig.json
 ```
 
-Ejecutar el frontend:
+## Ejecutar el frontend
+
 `npm run dev`
+
+# Uso de IA
+
+## Herramientas usada
+
+Utilice dos IA's. Para el diseño del Frontend utilice v0, es la IA de Vercel, con la cual fui ajustando el diseño segun me gustara. Y para código utilice Claude, a mi percepcion es la mejor IA para código.
+
+## Que partes del código genere y mejore con IA
+
+Utilice Claude para lograr correctamente un conjunto de test en el Backend. Nunca habia utilizado el ORM Prisma, por lo tanto me dijo perfectamente que debia hacer para poder realizar una correcta integracion.
+Ademas me ayudo mucho en el front para poder lograr el diseño correcto que yo queria. React es una tecnologia que utilice hace mucho tiempo asique me apoye mucho en la IA para poder recordar mis conocimientos adquiridos en su momento.
+
+## Que ajustes hice manualmente
+
+Si bien la IA me ayudo mucho con el diseño de la App, muchas veces me respondia de forma incorrecta, por lo tanto tuve que ajustar manualmente ciertas cuestiones de diseño.
+En los test, se confundia mucho, ponia rutas invalidas, test erroneos, entonces tuve que realizarle algunos cambios especificos.

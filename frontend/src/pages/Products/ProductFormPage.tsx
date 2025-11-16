@@ -93,6 +93,11 @@ export default function ProductFormPage({ mode }: { mode: "create" | "edit" }) {
           {mode === "create" ? "Crear" : "Guardar Cambios"}
         </button>
       </form>
+
+      <button className="btn-back" onClick={() => navigate("/products")}>
+        ← Volver
+      </button>
     </div>
+
   );
 }
